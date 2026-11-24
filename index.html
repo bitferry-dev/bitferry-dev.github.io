@@ -79,18 +79,43 @@
   figure {
     margin: 1.5rem 0 0;
   }
+  .screenshot-link {
+    display: block;
+    cursor: zoom-in;
+    border: none;
+    padding: 0;
+  }
+  .screenshot-link:hover {
+    text-decoration: none;
+  }
   figure img {
     display: block;
     max-width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(31, 35, 40, .12);
+    height: auto;
   }
   figcaption {
     color: var(--muted);
     font-size: .85rem;
     margin-top: .6rem;
     text-align: center;
+  }
+  dialog#lightbox {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 95vw;
+    max-height: 95vh;
+    cursor: zoom-out;
+  }
+  dialog#lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+  }
+  dialog#lightbox img {
+    display: block;
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
   }
 </style>
 </head>
@@ -107,10 +132,14 @@
     a different UNIX mount point or a different Windows drive letter.
   </p>
 
-  <h2>Screenshot</h2>
+  <p><i>Consider Bitferry as a human data courier: it does what Johnny Mnemonic did, except it is a file
+    on a USB stick rather than an overloaded brain.</i></p>
+
   <figure>
-    <img src="screenshot.webp" alt="Bitferry graphical frontend — tasks view">
-    <figcaption>The Bitferry graphical frontend — task management view</figcaption>
+    <a href="tasks.png" target="_blank" rel="noopener" class="screenshot-link" title="Click to view full size">
+      <img src="tasks.png" alt="Bitferry GUI — tasks" width="1254" height="770">
+    </a>
+    <figcaption>The Bitferry GUI — task management view</figcaption>
   </figure>
 
   <h2>Features</h2>
@@ -120,9 +149,9 @@
     <li>Recursive directory copy / update / synchronize</li>
     <li>Incremental backup with snapshotting and retention</li>
     <li>Password-based end-to-end encryption</li>
-    <li>Command line and graphical frontends</li>
-    <li>OS keyring / per-volume vault password storage</li>
+    <li>Site-local keyring / per-volume vault password storage</li>
     <li>Cloud relay and offline portable storage (USB / HDD / SSD) with media change detection</li>
+    <li>Command line and graphical frontends</li>
   </ul>
 
   <h2>Links</h2>
@@ -134,10 +163,25 @@
   </div>
 
   <footer>
-    <p>Bitferry is a human data courier: it does what Johnny Mnemonic did, except it is a file
-    on a USB stick rather than an overloaded brain.</p>
-    <p>&copy; Oleg A. Khlybov &middot; Distributed under the BSD 3-Clause License</p>
+    <p>&copy; Oleg A. Khlybov &lt;<a href="mailto:fougas@mail.ru">fougas@mail.ru</a>&gt; &middot; Distributed under the BSD 3-Clause License</p>
   </footer>
 </main>
+
+<dialog id="lightbox" onclick="this.close()">
+  <img id="lightbox-img" src="" alt="Bitferry GUI — tasks (full size)">
+</dialog>
+
+<script>
+  const link = document.querySelector('.screenshot-link');
+  const dialog = document.getElementById('lightbox');
+  const dialogImg = document.getElementById('lightbox-img');
+  if (link && dialog) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      dialogImg.src = link.href;
+      dialog.showModal();
+    });
+  }
+</script>
 </body>
 </html>
