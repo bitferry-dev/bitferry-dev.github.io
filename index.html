@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitferry — file synchronization &amp; backup automation</title>
+<meta name="description" content="Bitferry is a task-based file synchronization and backup automation tool built on top of Rclone and Restic.">
+<style>
+  :root {
+    --bg: #0d1117;
+    --fg: #c9d1d9;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --border: #21262d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+  }
+  h1 {
+    font-size: 2.4rem;
+    margin: 0 0 .25rem;
+    letter-spacing: .02em;
+  }
+  h1 .bit { color: var(--accent); }
+  .tagline {
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.15rem;
+    margin: 2.5rem 0 .75rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: .4rem;
+  }
+  p { margin: .75rem 0; }
+  ul { padding-left: 1.3rem; margin: .5rem 0; }
+  li { margin: .3rem 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin: 1.5rem 0 0;
+  }
+  .links a {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .5rem 1rem;
+  }
+  .links a:hover {
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .85rem;
+  }
+  code {
+    background: #161b22;
+    border-radius: 4px;
+    padding: .12em .4em;
+    font-size: .9em;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1><span class="bit">Bit</span>ferry</h1>
+  <p class="tagline">File synchronization &amp; backup automation</p>
+
+  <p>
+    Bitferry is a task-based file synchronization and backup automation tool built on top of
+    <a href="https://rclone.org">Rclone</a> and <a href="https://restic.net">Restic</a>.
+    It converts absolute endpoint paths into volume-relative ones, making data position-independent:
+    tasks keep working no matter where the portable storage appears the next time &mdash;
+    a different UNIX mount point or a different Windows drive letter.
+  </p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Multiplatform (Windows / UNIX) operation</li>
+    <li>One way / two way data synchronization</li>
+    <li>Recursive directory copy / update / synchronize</li>
+    <li>Incremental backup with snapshotting and retention</li>
+    <li>Password-based end-to-end encryption</li>
+    <li>Command line and graphical frontends</li>
+    <li>OS keyring / per-volume vault password storage</li>
+    <li>Cloud relay and offline portable storage (USB / HDD / SSD) with media change detection</li>
+  </ul>
+
+  <h2>Links</h2>
+  <div class="links">
+    <a href="https://github.com/bitferry-org/bitferry">Source code</a>
+    <a href="https://github.com/bitferry-org/bitferry/releases">Releases</a>
+    <a href="https://github.com/bitferry-org/bitferry/issues">Issue tracker</a>
+    <a href="https://github.com/bitferry-org/bitferry/blob/master/LICENSE">License (BSD 3-Clause)</a>
+  </div>
+
+  <footer>
+    <p>Bitferry is a human data courier: it does what Johnny Mnemonic did, except it is a file
+    on a USB stick rather than an overloaded brain.</p>
+    <p>&copy; Oleg A. Khlybov &middot; Distributed under the BSD 3-Clause License</p>
+  </footer>
+</main>
+</body>
+</html>
